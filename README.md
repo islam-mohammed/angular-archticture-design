@@ -19,3 +19,17 @@ Run `ng run build:prod` for a production build.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Completed Features
+
+- [x] Project Architecture including shared components and inputs.
+- [x] Login and Registration.
+- [x] Science and World news views.
+- [x] Story details view.
+- [x] Search with pagination.
+- [x] Search history.
+- [x] Sending JWT Beare Token.
+- [ ] Refresh token (I should have to refresh token to renew the token).
+- [ ] Loading spinner.
+- [ ] Story Comments (The nyt api send 401 error, it needs more investigation).
+- [ ] Some layout and design enhancements.
