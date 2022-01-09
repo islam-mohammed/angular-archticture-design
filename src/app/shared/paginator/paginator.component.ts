@@ -24,7 +24,7 @@ export class PaginatorComponent implements OnInit {
   ngOnInit(): void {}
   handle(e) {}
   initPaginator(meta: any) {
-    this.length = meta.hits / 10 <= this.maxNumberOfPages ? meta.hits / 10 : this.maxNumberOfPages;
+    this.length = meta.hits / 10 <= this.maxNumberOfPages ? Math.floor(meta.hits / 10) : this.maxNumberOfPages;
     this.pageNumber = meta?.offset / this.pageSize;
   }
 }
