@@ -1,0 +1,18 @@
+.logo {
+  @apply flex mt-5 mb-3;
+  &.start {
+    @apply justify-center;
+    @media (min-width: theme("screens.md")) {
+      @apply justify-start ml-10;
+    }
+  }
+  &.center {
+    @apply justify-center;
+  }
+  &.end {
+    @apply justify-center;
+    @media (min-width: theme("screens.md")) {
+      @apply justify-end mr-10;
+    }
+  }
+}

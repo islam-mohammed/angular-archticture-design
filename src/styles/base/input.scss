@@ -1,0 +1,10 @@
+.app-input {
+  @apply w-full rounded-md border-solid border border-secondry h-9 px-4 outline-none leading-4;
+
+  &:focus {
+    @apply border-primary;
+  }
+  &:disabled {
+    @apply bg-gray-400 text-secondry;
+  }
+}

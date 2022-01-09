@@ -1,0 +1,35 @@
+h1,
+h2,
+h3,
+h4,
+.h1,
+.h2,
+.h3,
+.h4 {
+  @apply font-base;
+}
+
+h1,
+.h1 {
+  @apply font-light text-4xl my-3;
+}
+
+h2,
+.h2 {
+  @apply font-light text-3xl my-3;
+}
+
+h3,
+.h3 {
+  @apply font-light text-2xl my-3;
+}
+
+h4,
+.h4 {
+  @apply font-light text-lg my-3;
+}
+
+b,
+strong {
+  @apply font-medium;
+}

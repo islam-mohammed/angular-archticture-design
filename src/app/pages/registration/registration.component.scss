@@ -1,0 +1,12 @@
+.app-page {
+  @apply w-full mt-3;
+  @media (min-width: theme("screens.md")) {
+    @apply max-w-screen-sm m-auto mt-6;
+  }
+  .error {
+    @apply opacity-0 text-sm text-error pt-1 pb-4;
+    &_active {
+      @apply opacity-100;
+    }
+  }
+}

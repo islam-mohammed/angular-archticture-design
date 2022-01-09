@@ -1,0 +1,20 @@
+.story-details {
+  @apply flex flex-col;
+  &__header-abstract {
+    @apply text-xl my-10;
+  }
+  &__image {
+    @apply mb-10;
+    &-figure {
+      &--caption {
+        @apply italic text-sm mt-2;
+      }
+    }
+  }
+  &__meta {
+    @apply mb-10;
+  }
+  p {
+    @apply mb-2;
+  }
+}

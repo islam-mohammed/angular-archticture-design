@@ -1,0 +1,55 @@
+<div class="app-page">
+  <div class="app-page__header">
+    <h1>Registration</h1>
+  </div>
+
+  <form
+    [formGroup]="form"
+    (submit)="onSubmit()"
+    (keyup.enter)="onSubmit()"
+    novalidate
+    autocomplete="off"
+  >
+    <div class="app-page__content">
+      <ny-form-field
+        label="Email"
+        [required]="true"
+        [control]="form.controls['email']"
+        [isInline]="false"
+        [patternError]="regexErrors.email"
+      >
+        <ny-input formControlName="email"></ny-input>
+      </ny-form-field>
+
+      <ny-form-field
+        label="Password"
+        [required]="true"
+        [control]="form.controls['password']"
+        [isInline]="false"
+        [patternError]="regexErrors.password"
+      >
+        <ny-password formControlName="password"></ny-password>
+      </ny-form-field>
+
+      <ny-form-field
+        label="Repeat password"
+        [required]="true"
+        [control]="form.controls['passwordRepeat']"
+        [isInline]="false"
+        [patternError]="regexErrors.password"
+      >
+        <ny-password formControlName="passwordRepeat"></ny-password>
+      </ny-form-field>
+
+      <div class="error" [class.error_active]="form.hasError('repeat')">
+        Entered passwords don't match
+      </div>
+    </div>
+
+    <div class="app-page__footer">
+      <ny-button type="submit">Complete</ny-button>
+    </div>
+  </form>
+
+  <ny-spinner *ngIf="loading$ | async"></ny-spinner>
+</div>

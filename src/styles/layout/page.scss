@@ -1,0 +1,9 @@
+.app-page {
+  @apply max-w-5xl my-4 bg-light p-8 relative m-auto;
+  &__header {
+    @apply mb-8 text-center;
+  }
+  &__footer {
+    @apply mt-8 flex content-end;
+  }
+}

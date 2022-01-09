@@ -1,0 +1,9 @@
+.mat-snackbar {
+  &_error {
+    @apply bg-error text-white;
+  }
+
+  &_success {
+    @apply bg-success text-white;
+  }
+}

@@ -1,0 +1,24 @@
+<div class="app-page">
+  <mat-form-field class="w-full text-2xl">
+    <input type="text" matInput placeholder="Search" #q />
+    <mat-icon (click)="applySearch(q.value)" class="cursor-pointer font-material text-2xl" matSuffix>search</mat-icon>
+  </mat-form-field>
+  <ny-search-terms
+    [searchTerms]="searchTermsArray"
+    (termClick)="onTermClick($event)"
+  ></ny-search-terms>
+
+  <h3 class="story-title">
+    search results for
+    <span>" {{ q.value }} "</span>
+  </h3>
+  <ny-story-list
+    [stories]="(stories$ | async) || []"
+    (storySelect)="onSoryClick($event)"
+  ></ny-story-list>
+  <ny-paginator
+    [paginationMetaData]="searchMeta"
+    [maxNumberOfPages]="100"
+    (changePage)="applySearch(q.value, $event)"
+  ></ny-paginator>
+</div>

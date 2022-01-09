@@ -1,0 +1,36 @@
+.form-field {
+  @apply pb-2;
+
+  &__label {
+    @apply block mr-1;
+  }
+
+  &__control {
+    @apply block;
+  }
+
+  &__error {
+    @apply text-sm text-error py-1 opacity-0;
+    span {
+      @apply block;
+    }
+  }
+
+  &_error {
+    .form-field__error {
+      @apply opacity-100;
+    }
+  }
+
+  &_inline {
+    @apply flex;
+
+    > .form-field__label {
+      @apply py-2 pl-2 w-1/5;
+    }
+
+    > .form-field__control {
+      @apply w-4/5;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+// Tailwind styles
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "reset";
+@import "base";
+@import "layout";
+@import "vendor";
+
+html,
+body {
+  @apply h-0 m-0 border-0 text-base  text-black bg-white font-base;
+}

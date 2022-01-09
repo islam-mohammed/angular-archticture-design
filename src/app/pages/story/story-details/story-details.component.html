@@ -1,0 +1,90 @@
+<div class="app-page">
+  <div class="story-details" *ngIf="story$ | async as story">
+    <div class="story-details__header">
+      <h2 class="story-details__header-title">{{ story?.title }}</h2>
+      <p  class="story-details__header-abstract">{{ story?.abstract }}</p>
+    </div>
+    <div class="story-details__image">
+      <figure class="story-details__image-figure">
+        <img [src]="story.multimedia[0]?.url" [alt]="story?.title" />
+        <figcaption class="story-details__image-figure--caption">
+          {{ story.multimedia[0]?.caption }}
+        </figcaption>
+      </figure>
+    </div>
+    <div class="story-details__meta">
+      <span>
+        <b>{{ story?.byline }}</b>
+      </span>
+      |
+      <span>{{ story?.published_date | date:'short'}}></span>
+    </div>
+    <div class="story-details__body">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et ipsum
+        ut nisi finibus eleifend vel vitae turpis. Praesent condimentum felis et
+        erat bibendum, sed suscipit nisi mollis. Suspendisse a vestibulum nulla,
+        ut hendrerit purus. Etiam efficitur augue tellus, non mattis leo
+        consectetur vitae. Cras et quam congue lectus feugiat porta. Sed
+        efficitur nulla eget dolor tristique, vel ullamcorper tortor lacinia.
+        Duis mattis egestas massa faucibus luctus. Suspendisse tortor nunc,
+        bibendum a pharetra eget, cursus at justo. Suspendisse potenti. Mauris
+        ut posuere velit.
+      </p>
+      <p>
+        Donec quis purus auctor, bibendum purus non, ornare arcu. Aenean non
+        commodo dui, sit amet maximus nunc. Nulla tempor a felis ac laoreet.
+        Pellentesque erat diam, condimentum nec sem consectetur, tempor egestas
+        risus. Nulla laoreet nulla et porttitor finibus. Sed quis magna sit amet
+        nunc viverra molestie semper id sapien. Nullam accumsan erat vitae
+        lectus varius dictum. Cras ut elit pellentesque neque pulvinar
+        sollicitudin.
+      </p>
+      <p>
+        Fusce sollicitudin non justo quis dapibus. Ut aliquet fermentum quam, id
+        consectetur eros lobortis nec. Ut hendrerit semper felis, ac varius
+        magna luctus quis. Praesent iaculis eros vel arcu pellentesque, id
+        ultricies justo molestie. Cras eget egestas neque. Curabitur nec tortor
+        eget sapien malesuada ornare vel dictum massa. Etiam augue lorem,
+        ultricies nec urna vitae, egestas faucibus est. Quisque ut aliquet
+        tortor. Praesent mollis nunc nec cursus auctor. Orci varius natoque
+        penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+        Phasellus viverra massa facilisis eleifend pharetra. Aliquam mollis orci
+        a felis luctus tristique. Nam rhoncus dignissim ligula vel tempus. Cras
+        dignissim lacus consequat lacus ornare, sit amet elementum ligula
+        mattis.
+      </p>
+      <p>
+        Pellentesque in nunc vitae velit porttitor rhoncus ut eget urna. Vivamus
+        vitae venenatis metus, aliquam luctus arcu. Sed nec pellentesque lectus.
+        Suspendisse potenti. Proin eleifend laoreet tincidunt. Aliquam vulputate
+        lectus vel molestie sollicitudin. Nunc ultricies ullamcorper velit et
+        gravida. Vestibulum consectetur nulla in condimentum suscipit. Aenean
+        vitae ex vel arcu porttitor sagittis in sed nisi. Donec eget orci eget
+        nulla tempus ornare eget eu lectus. Fusce sed eros nec magna lobortis
+        fringilla eget a odio. Duis neque ipsum, placerat eget facilisis a,
+        semper a leo. Aenean maximus nisi neque, porta ornare risus dignissim
+        non. Sed efficitur nunc eget massa condimentum, quis facilisis erat
+        aliquet. In luctus diam sit amet dui scelerisque vulputate. Quisque
+        semper imperdiet nunc id convallis. Sed fermentum ullamcorper velit,
+        luctus sodales libero tempor et. Nulla luctus purus vitae sapien
+        bibendum, eu convallis libero congue. Curabitur rutrum mi enim, in
+        ornare odio consectetur nec.
+      </p>
+      <p>
+        Aenean quam nisl, sollicitudin ac sollicitudin et, luctus a neque.
+        Mauris accumsan imperdiet ornare. Curabitur sem odio, aliquam ac metus
+        quis, scelerisque hendrerit ligula. Donec commodo leo eget dui suscipit
+        hendrerit. Morbi eget urna erat. Mauris neque libero, lobortis in nibh
+        sit amet, tincidunt egestas mi. Mauris hendrerit mi ac pulvinar porta.
+        Nunc nec nulla varius, ullamcorper libero vitae, pretium eros. Donec
+        luctus massa at velit tincidunt porttitor eget id velit. Maecenas a
+        eleifend leo, sed tempor nisi. Donec id gravida arcu, ac auctor turpis.
+      </p>
+    </div>
+    <div class="story-details__footer"></div>
+    <div class="story-details__comment">
+      <ny-comment-list [comments]=""></ny-comment-list>
+    </div>
+  </div>
+</div>

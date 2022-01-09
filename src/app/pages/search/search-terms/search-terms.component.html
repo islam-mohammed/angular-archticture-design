@@ -1,0 +1,9 @@
+
+<div class="terms">
+  <h5 class="mb-5 font-bold">Latest searches:</h5>
+  <ul class="terms-list">
+    <li class="terms-list__item" *ngFor="let term of searchTerms">
+      <a (click)="termClick.emit(term)" class="terms-list__item--link">{{term}}</a>
+    </li>
+  </ul>
+</div>

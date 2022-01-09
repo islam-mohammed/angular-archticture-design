@@ -1,0 +1,40 @@
+<nav class="nav">
+  <div class="nav-container">
+    <div class="nav-container__sections">
+      <!-- Primary Navbar items -->
+      <div class="nav-container__sections--menu">
+        <ng-container *ngIf="!isAuthorized">
+          <a routerLink="login" routerLinkActive="active" class="menu-item">
+            Login
+          </a>
+          <a routerLink="register" routerLinkActive="active" class="menu-item">
+            Register
+          </a>
+        </ng-container>
+        <ng-container *ngIf="isAuthorized">
+          <a
+            routerLink="story/world"
+            routerLinkActive="active"
+            class="menu-item"
+          >
+            World Stories
+          </a>
+          <a
+            routerLink="story/science"
+            routerLinkActive="active"
+            class="menu-item"
+          >
+            Since Stories
+          </a>
+          <a (click)="logOut.emit()" class="menu-item">Log out</a>
+        </ng-container>
+      </div>
+      <div class="nav-container__sections--search" *ngIf="isAuthorized">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Search" #q/>
+          <mat-icon matSuffix (click)="search(q.value)" class="cursor-pointer">search</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</nav>

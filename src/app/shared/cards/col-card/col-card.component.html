@@ -1,0 +1,33 @@
+<a (click)="cardClick.emit(colCardData.id)">
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-subtitle
+        class="card-header__subtile"
+        *ngIf="colCardData?.section"
+      >
+        {{ colCardData?.section }}
+      </mat-card-subtitle>
+      <mat-card-subtitle
+        class="card-header__subtile last"
+        *ngIf="colCardData?.publishedDate"
+      >
+        {{ colCardData?.publishedDate | date: 'short' }}
+      </mat-card-subtitle>
+      <mat-card-title *ngIf="colCardData?.title">
+        {{ colCardData?.title }}
+      </mat-card-title>
+    </mat-card-header>
+    <img
+      class="card-image"
+      mat-card-image
+      defaultImage="/assets/images/image-placeholder.jpg"
+      [lazyLoad]="colCardData?.imageUrl"
+      [alt]="colCardData?.title"
+    />
+    <mat-card-content *ngIf="colCardData?.abstract">
+      <p>
+        {{ colCardData?.abstract }}
+      </p>
+    </mat-card-content>
+  </mat-card>
+</a>

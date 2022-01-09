@@ -1,0 +1,18 @@
+.nav {
+  @apply bg-white shadow-lg;
+  .nav-container {
+    @apply max-w-6xl mx-auto px-4;
+    &__sections {
+      @apply flex justify-between;
+      &--menu {
+        @apply hidden;
+        @media (min-width: theme("screens.md")) {
+          @apply flex items-center space-x-1;
+        }
+      }
+    }
+    .menu-item {
+      @apply py-4 px-2 text-gray-500 border-b-4 hover:text-gray-900 font-semibold transition duration-300;
+    }
+  }
+}

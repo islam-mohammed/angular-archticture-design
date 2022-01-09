@@ -1,0 +1,5 @@
+:host-context(.form-field_error) {
+  input {
+    @apply border border-solid text-error;
+  }
+}

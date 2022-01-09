@@ -1,0 +1,12 @@
+<div
+  class="logo"
+  [ngClass]="{
+    start: position === 'start',
+    center: position === 'center',
+    end: position === 'end'
+  }"
+>
+  <a routerLink="/home">
+    <img [src]="src" [alt]="alt" [style.width]="width" />
+  </a>
+</div>

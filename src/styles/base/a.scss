@@ -1,0 +1,8 @@
+.app-a {
+  @apply text-link cursor-pointer mr-1 no-underline;
+
+  &:hover,
+  &_active {
+    @apply text-primary;
+  }
+}

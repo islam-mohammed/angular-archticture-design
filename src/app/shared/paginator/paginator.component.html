@@ -1,0 +1,43 @@
+<div
+  class="flex justify-end items-center px-2 flex-wrap-reverse w-full bg-white p-2 m-5"
+>
+  <div class="flex items-baseline mr-2">
+    <div class="mx-2 text-xs text-secondry">
+      Items per page:
+      <span>{{ pageSize }}</span>
+    </div>
+  </div>
+  <div class="flex items-center">
+    <div class="mr-8 ml-6 text-xs text-secondry">
+      {{ pageNumber }} of {{ length }}
+    </div>
+    <button
+      class="paginator-button"
+      [disabled]="pageNumber === 0"
+      (click)="changePage.emit(pageNumber - 1)"
+    >
+      <svg
+        style="width: 24px"
+        viewBox="0 0 24 24"
+        focusable="false"
+        class="mat-paginator-icon"
+      >
+        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+      </svg>
+    </button>
+    <button
+      class="paginator-button"
+      [disabled]="pageNumber === length - 1"
+      (click)="changePage.emit(pageNumber + 1)"
+    >
+      <svg
+        style="width: 24px"
+        viewBox="0 0 24 24"
+        focusable="false"
+        class="mat-paginator-icon"
+      >
+        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+      </svg>
+    </button>
+  </div>
+</div>

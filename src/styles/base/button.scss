@@ -1,0 +1,7 @@
+.app-button {
+  @apply py-2 px-5 bg-transparent rounded-3xl border border-solid border-primary mx-1;
+  &:hover,
+  &:focus {
+    @apply bg-primary text-white border-white;
+  }
+}

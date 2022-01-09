@@ -1,0 +1,6 @@
+.app-page {
+  @apply w-full mt-3;
+  @media (min-width: theme("screens.md")) {
+    @apply max-w-screen-sm m-auto mt-6;
+  }
+}

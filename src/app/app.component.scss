@@ -1,0 +1,9 @@
+.app-container {
+  @apply p-6;
+  @media (min-width: theme("screens.md")) {
+    @apply px-20 py-10;
+  }
+  @media (min-width: theme("screens.lg")) {
+    @apply px-32;
+  }
+}

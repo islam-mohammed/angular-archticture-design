@@ -1,0 +1,4 @@
+<div class="app-page">
+  <h3 class="story-title">{{ storyType | titlecase }}</h3>
+  <ny-story-list [stories]="(stories$ | async) || []" (storySelect)="onSoryClick($event)"></ny-story-list>
+</div>
