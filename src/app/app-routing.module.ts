@@ -29,7 +29,7 @@ const routes: Routes = [
   },
   {
     path: 'search',
-    loadChildren: () => import('@app/pages/search/search.module').then(m => m.SeachModule),
+    loadChildren: () => import('@app/pages/story/search/search.module').then(m => m.SeachModule),
     canLoad: [AuthGuard]
   },
   {
