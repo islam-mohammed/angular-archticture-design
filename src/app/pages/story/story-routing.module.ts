@@ -11,10 +11,10 @@ const routes: Routes = [
   },
   {
     path: ':id',
-    component: StoryDetailsComponent,
-    resolve: {
-      comments: CommentResolver
-    }
+    component: StoryDetailsComponent
+    // resolve: {
+    //   comments: CommentResolver
+    // }
   }
 ];
 
