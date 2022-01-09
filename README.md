@@ -2,9 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.0.
 
-A simple app to hit the NY Times Top Stories API and show a list of stories, that shows details when items on the list are tapped (a typical master/detail app).
+## Development
 
-## Developmenta
+Open the environmnets fils and change the `apiKey` to the ny api access key.
+
+Run `npm i`.
 
 Run `npm start` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
