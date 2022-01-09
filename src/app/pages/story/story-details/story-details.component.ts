@@ -24,9 +24,6 @@ export class StoryDetailsComponent implements OnInit {
     } else {
       this.story$ = this.store.select(fromStory.selectWorldStoryById(storyId));
     }
-  }
-  ngAfterViewChecked() {
-    // not the right way to use the window object; just to save time :)
     window.scrollTo(0, 0);
   }
 }

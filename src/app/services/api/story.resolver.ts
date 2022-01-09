@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
-import { catchError, Observable, of, switchMap, take, tap, throwError } from 'rxjs';
+import { catchError, map, Observable, of, switchMap, take, tap, throwError } from 'rxjs';
 import * as fromStory from '@app/store/story';
 import { Store } from '@ngrx/store';
 import { StoryService, StoryType } from './story.service';
@@ -28,7 +28,14 @@ export class StoryResolver implements Resolve<Story[] | null> {
         }
         return this.storyService.getStories(StoryType.SCIENCE).pipe(
           take(1),
-          tap(stories => this.store.dispatch(fromStory.fetchStoriesSuccess({ stories, storyType: StoryType.SCIENCE }))),
+          map(stories => {
+            const storiesClone: Story[] = JSON.parse(JSON.stringify(stories));
+            for (let i = 0; i < stories.length; i++) {
+              storiesClone[i].id = i + 1;
+            }
+            this.store.dispatch(fromStory.fetchStoriesSuccess({ stories: storiesClone, storyType: StoryType.SCIENCE }));
+            return storiesClone;
+          }),
           catchError(error => {
             this.store.dispatch(fromStory.fetchStoriesError({ message: error.message }));
             return throwError(error);
@@ -46,7 +53,14 @@ export class StoryResolver implements Resolve<Story[] | null> {
         }
         return this.storyService.getStories(StoryType.WORLD).pipe(
           take(1),
-          tap(stories => this.store.dispatch(fromStory.fetchStoriesSuccess({ stories, storyType: StoryType.WORLD }))),
+          map(stories => {
+            const storiesClone: Story[] = JSON.parse(JSON.stringify(stories));
+            for (let i = 0; i < stories.length; i++) {
+              storiesClone[i].id = i + 1;
+            }
+            this.store.dispatch(fromStory.fetchStoriesSuccess({ stories: storiesClone, storyType: StoryType.WORLD }));
+            return storiesClone;
+          }),
           catchError(error => {
             this.store.dispatch(fromStory.fetchStoriesError({ message: error.message }));
             return throwError(error);

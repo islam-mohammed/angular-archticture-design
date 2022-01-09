@@ -12,7 +12,10 @@
       }
     }
     .menu-item {
-      @apply py-4 px-2 text-gray-500 border-b-4 hover:text-gray-900 font-semibold transition duration-300;
+      @apply py-4 px-2 text-gray-400 border-b-4 hover:text-gray-900 font-semibold transition duration-300;
+      &.active {
+        @apply text-gray-900;
+      }
     }
   }
 }

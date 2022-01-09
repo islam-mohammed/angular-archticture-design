@@ -45,18 +45,13 @@ export const storyReducer = createReducer(
   })),
   on(storyActions.fetchStoriesSuccess, (state, { stories, storyType }) => {
     const storiesWithId: Story[] = JSON.parse(JSON.stringify(stories));
-
-    // O[n]
-    for (let i = 0; i < stories.length; i++) {
-      storiesWithId[i].id = i + 1;
-    }
     switch (storyType) {
       case StoryType.SCIENCE:
         return {
           ...JSON.parse(JSON.stringify(state)),
           science: {
             currentPage: 0,
-            stories: storiesWithId
+            stories
           },
           loading: false,
           error: ''
@@ -67,7 +62,7 @@ export const storyReducer = createReducer(
           ...JSON.parse(JSON.stringify(state)),
           world: {
             currentPage: 0,
-            stories: storiesWithId
+            stories
           },
           loading: false,
           error: ''

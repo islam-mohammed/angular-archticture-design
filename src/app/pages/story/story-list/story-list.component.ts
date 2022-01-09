@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Story } from '@app/models';
 
 @Component({
@@ -10,8 +10,4 @@ export class StoryListComponent {
   @Input() stories: Story[];
   @Output() storySelect = new EventEmitter<number>();
   constructor() {}
-
-  trackByFn(index: number, story: Story) {
-    return story.id;
-  }
 }
