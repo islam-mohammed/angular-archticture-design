@@ -1,10 +1,4 @@
-import {
-  Component,
-  forwardRef,
-  Input,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { Component, forwardRef, Input, Output, EventEmitter } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 type PasswordType = 'password' | 'text';
@@ -17,18 +11,19 @@ type PasswordType = 'password' | 'text';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => PasswordComponent),
-      multi: true,
-    },
-  ],
+      multi: true
+    }
+  ]
 })
 export class PasswordComponent implements ControlValueAccessor {
   @Input() placeholder: string;
-
+  @Input() enableShowPassword = false;
   @Output() changed = new EventEmitter<string>();
 
   value: string;
   isDisabled: boolean;
   passwordType: PasswordType;
+  showPassword = true;
 
   constructor() {
     this.passwordType = 'password';

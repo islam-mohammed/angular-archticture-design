@@ -1,7 +1,10 @@
 :host {
-  @apply absolute top-0 left-0 right-0 w-screen h-screen z-50 flex items-start content-center;
+  @apply absolute top-0 left-0 right-0 w-screen h-screen z-50 flex items-center justify-center;
   background: rgba(255, 255, 255, 0.65);
-  .spinner {
-    @apply w-24 h-24;
+  .spinner-container {
+    @apply flex justify-center items-center;
+    &__spinner {
+      @apply spinner-border animate-spin inline-block border-4 rounded-full w-16 h-16;
+    }
   }
 }

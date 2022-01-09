@@ -3,3 +3,10 @@
     @apply border border-solid text-error;
   }
 }
+
+.form-input {
+  @apply form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 transition ease-in-out m-0;
+  &:focus {
+    @apply text-gray-700 bg-white outline-none border-primary shadow-input;
+  }
+}

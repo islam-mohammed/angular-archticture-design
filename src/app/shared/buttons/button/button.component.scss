@@ -1,0 +1,12 @@
+:host(.w-full) {
+  @apply w-full;
+  .app-button {
+    @apply w-full;
+  }
+}
+:host(.w-fit) {
+  @apply w-fit;
+  .app-button {
+    @apply w-fit;
+  }
+}

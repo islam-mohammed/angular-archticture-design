@@ -18,7 +18,7 @@
         [isInline]="false"
         [patternError]="regexErrors.email"
       >
-        <ny-input formControlName="email"></ny-input>
+       <ny-input formControlName="email" lable="Email address" id="email" type="email"></ny-input>
       </ny-form-field>
 
       <ny-form-field
@@ -28,7 +28,7 @@
         [isInline]="false"
         [patternError]="regexErrors.password"
       >
-        <ny-password formControlName="password"></ny-password>
+       <ny-input formControlName="password" lable="Password" id="password" type="password"></ny-input>
       </ny-form-field>
 
       <ny-form-field
@@ -37,19 +37,20 @@
         [control]="form.controls['passwordRepeat']"
         [isInline]="false"
         [patternError]="regexErrors.password"
+
       >
-        <ny-password formControlName="passwordRepeat"></ny-password>
+        <ny-input formControlName="passwordRepeat" lable="Confirm password" id="confirm-password" type="password"></ny-input>
       </ny-form-field>
 
-      <div class="error" [class.error_active]="form.hasError('repeat')">
+      <div  class="error" [class.error_active]="form.hasError('repeat')">
         Entered passwords don't match
       </div>
     </div>
 
-    <div class="app-page__footer">
-      <ny-button type="submit">Complete</ny-button>
+    <div class="app-page__footer mb-7">
+      <ny-button type="submit" class="w-full">Complete</ny-button>
     </div>
   </form>
 
-  <ny-spinner *ngIf="loading$ | async"></ny-spinner>
 </div>
+<ny-spinner *ngIf="loading$ | async"></ny-spinner>

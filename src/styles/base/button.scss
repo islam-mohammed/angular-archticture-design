@@ -1,7 +1,9 @@
 .app-button {
-  @apply py-2 px-5 bg-transparent rounded-3xl border border-solid border-primary mx-1;
-  &:hover,
+  @apply inline-block px-8 py-4 border-2 border-gray-800 border-solid text-gray-800 font-medium text-xs leading-tight uppercase transition duration-150 ease-in-out;
+  &:hover {
+    @apply bg-primary bg-opacity-5 text-white;
+  }
   &:focus {
-    @apply bg-primary text-white border-white;
+    @apply ring-0;
   }
 }

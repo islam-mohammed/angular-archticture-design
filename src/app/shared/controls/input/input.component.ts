@@ -1,10 +1,4 @@
-import {
-  Component,
-  forwardRef,
-  Input,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { Component, forwardRef, Input, Output, EventEmitter } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
@@ -15,12 +9,14 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => InputComponent),
-      multi: true,
-    },
-  ],
+      multi: true
+    }
+  ]
 })
 export class InputComponent implements ControlValueAccessor {
-  @Input() placeholder: string;
+  @Input() lable: string;
+  @Input() id: string;
+  @Input() type: 'password' | 'text' | 'email' | 'tel' = 'text';
   @Output() changed = new EventEmitter<string>();
 
   value: string;

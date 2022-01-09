@@ -1,10 +1,13 @@
-
-<input
-  type="text"
-  class="app-input"
-  [value]="value"
-  [placeholder]="placeholder || ''"
-  [attr.disabled]="isDisabled ? true : null"
-  (keyup)="onKeyup($any($event.target)?.value)"
-  (blur)="onBlur()"
-/>
+<div class="form-floating  xl:w-96">
+  <input
+    [id]="id"
+    [type]="type"
+    class="form-input"
+    [value]="value"
+    [placeholder]="lable"
+    [attr.disabled]="isDisabled ? true : null"
+    (keyup)="onKeyup($any($event.target)?.value)"
+    (blur)="onBlur()"
+  />
+    <label [for]="id"  class="text-gray-700">{{lable}}</label>
+</div>
