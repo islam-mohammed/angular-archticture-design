@@ -7,18 +7,13 @@ import * as fromUser from '@app/store/user';
 @Component({
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit {
-  loading$ = this.store.select(fromUser.selectLoading);
-
   form: FormGroup;
   regexErrors = regexErrors;
 
-  constructor(
-    private fb: FormBuilder,
-    private store: Store<fromUser.UserState>
-  ) {}
+  constructor(private fb: FormBuilder, private store: Store<fromUser.UserState>) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -26,20 +21,16 @@ export class LoginComponent implements OnInit {
         null,
         {
           updateOn: 'blur',
-          validators: [
-            Validators.required,
-            Validators.maxLength(128),
-            Validators.pattern(regex.email),
-          ],
-        },
+          validators: [Validators.required, Validators.maxLength(128), Validators.pattern(regex.email)]
+        }
       ],
       password: [
         null,
         {
           updateOn: 'change',
-          validators: [Validators.required],
-        },
-      ],
+          validators: [Validators.required]
+        }
+      ]
     });
   }
 
@@ -49,7 +40,7 @@ export class LoginComponent implements OnInit {
 
       const credentials: fromUser.EmailPasswordCredentials = {
         email: value.email,
-        password: value.password,
+        password: value.password
       };
 
       this.store.dispatch(fromUser.login({ credentials }));

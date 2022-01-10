@@ -16,7 +16,6 @@ export interface StoryState {
     currentPage: number;
     stories: Story[];
   };
-  loading: boolean;
   error: string;
 }
 
@@ -33,7 +32,6 @@ export const initialState: StoryState = {
     currentPage: 0,
     stories: []
   },
-  loading: false,
   error: ''
 };
 
@@ -53,7 +51,6 @@ export const storyReducer = createReducer(
             currentPage: 0,
             stories
           },
-          loading: false,
           error: ''
         };
 
@@ -64,14 +61,12 @@ export const storyReducer = createReducer(
             currentPage: 0,
             stories
           },
-          loading: false,
           error: ''
         };
     }
   }),
   on(storyActions.fetchStoriesError, (state, { message }) => ({
     ...JSON.parse(JSON.stringify(state)),
-    loading: false,
     error: message
   }))
 );

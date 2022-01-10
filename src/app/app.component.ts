@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromUser from '@app/store/user';
+import * as fromGlobal from '@app/store/global';
 
 @Component({
   selector: 'ny-root',
@@ -9,6 +10,7 @@ import * as fromUser from '@app/store/user';
 })
 export class AppComponent {
   isAuthorized$ = this.store.select(fromUser.selectIsAuthorized);
+  loading$ = this.store.select(fromGlobal.selectLoadingStatus);
 
   constructor(private store: Store<fromUser.UserState>) {
     store.dispatch(fromUser.init());

@@ -1,6 +1,13 @@
+:host {
+  @apply w-full;
+}
+
 .terms {
   @apply mb-10;
 }
 .terms-list__item {
-  @apply inline mx-4 text-secondry;
+  @apply block mx-4 text-secondry;
+  @media (min-width: theme("screens.md")) {
+    @apply inline;
+  }
 }

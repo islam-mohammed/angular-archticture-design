@@ -16,16 +16,14 @@ export class StoryService {
   getStories(storyType: StoryType): Observable<Story[]> {
     const params = new HttpParams().set('api-key', environment.apiKey);
     params.set('api-key', environment.apiKey);
-    return this.http.get<Story[]>(`/topstories/v2/${storyType}.json`, { params }).pipe(
-      map((data: any) => data.results),
-      catchError(error => throwError(error))
-    );
+    return this.http
+      .get<Story[]>(`${environment.apiUrl}/topstories/v2/${storyType}.json`, { params })
+      .pipe(map((data: any) => data.results));
   }
   getStoryComments(url: string, offset = 0): Observable<Comment[]> {
     const params = new HttpParams().set('api-key', environment.apiKey).set('offset', offset).set('url', url);
-    return this.http.get<Comment[]>(`/community/v3/user-content/url.json`, { params }).pipe(
-      map((data: any) => data.results?.comments),
-      catchError(error => throwError(error))
-    );
+    return this.http
+      .get<Comment[]>(`${environment.apiUrl}/community/v3/user-content/url.json`, { params })
+      .pipe(map((data: any) => data.results?.comments));
   }
 }

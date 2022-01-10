@@ -1,7 +1,6 @@
-
-
 <ny-header
   [isAuthorized]="(isAuthorized$ | async) || false"
   (logOut)="onlogOut()"
 ></ny-header>
 <router-outlet></router-outlet>
+<ny-spinner *ngIf="loading$ | async"></ny-spinner>

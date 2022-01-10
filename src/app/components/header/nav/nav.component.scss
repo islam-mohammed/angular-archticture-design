@@ -1,9 +1,9 @@
 .nav {
-  @apply bg-white shadow-lg;
+  @apply bg-white shadow-lg h-14 justify-center items-center;
   .nav-container {
-    @apply max-w-6xl mx-auto px-4;
+    @apply max-w-6xl mx-auto px-4 h-full;
     &__sections {
-      @apply flex justify-between;
+      @apply flex justify-between h-full;
       &--menu {
         @apply hidden;
         @media (min-width: theme("screens.md")) {
@@ -17,5 +17,11 @@
         @apply text-gray-900;
       }
     }
+  }
+}
+.mobile-menu {
+  @apply h-screen absolute w-64 left-12 z-10 bg-white p-10;
+  a {
+    @apply block;
   }
 }

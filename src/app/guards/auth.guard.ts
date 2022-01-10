@@ -6,21 +6,17 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class AuthGuard implements CanLoad {
-  constructor(
-    private router: Router,
-    private store: Store<fromUser.UserState>
-  ) {}
+  constructor(private router: Router, private store: Store<fromUser.UserState>) {}
 
   private check(): Observable<boolean> {
     return this.store.select(fromUser.selectUserState).pipe(
-      filter((state) => !state.loading),
       take(1),
-      tap((state) => {
+      tap(state => {
         if (!state.isAuthorized) {
           this.router.navigate(['login']);
         }
       }),
-      map((state) => state.isAuthorized)
+      map(state => state.isAuthorized)
     );
   }
 

@@ -3,8 +3,9 @@ import { Actions, ofType, createEffect } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, exhaustMap, map, tap } from 'rxjs/operators';
 import * as UserActions from './user.actions';
-import { AuthService } from '@app/services';
-import { ActivatedRoute, Router } from '@angular/router';
+import * as globalActions from '@app/store/global';
+import { AuthService, NotificationService } from '@app/services';
+import { Router } from '@angular/router';
 import { IsValidToken } from '@app/shared/utils';
 
 @Injectable()
@@ -12,7 +13,7 @@ export class UserEffects {
   init$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UserActions.init),
-      map((_) => {
+      map(_ => {
         const token = localStorage.getItem('token');
         if (token) {
           if (IsValidToken(token)) {
@@ -27,16 +28,22 @@ export class UserEffects {
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UserActions.login),
-      exhaustMap((action) => {
+      tap(_ => {
+        globalActions.startLoading();
+      }),
+      exhaustMap(action => {
         return this.authService.login(action.credentials).pipe(
-          map((token) => {
+          map(token => {
             this.saveToken(token);
             this.router.navigateByUrl('/');
+            globalActions.stopLoading();
             return UserActions.loginSuccess({ isAuthorized: true });
           }),
-          catchError((error: any) =>
-            of(UserActions.loginError({ message: error.message }))
-          )
+          catchError((errorObj: any) => {
+            globalActions.stopLoading();
+            this.notificationService.error(errorObj.error.message);
+            return of(UserActions.loginError({ message: errorObj.error.message }));
+          })
         );
       })
     )
@@ -44,16 +51,20 @@ export class UserEffects {
   register$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UserActions.register),
-      exhaustMap((action) =>
+      tap(_ => globalActions.startLoading()),
+      exhaustMap(action =>
         this.authService.register(action.credentials).pipe(
-          map((token) => {
+          map(token => {
             this.saveToken(token);
             this.router.navigateByUrl('/');
+            globalActions.stopLoading();
             return UserActions.registerSuccess({ isAuthorized: true });
           }),
-          catchError((error: any) =>
-            of(UserActions.registerError({ message: error.message }))
-          )
+          catchError((errorObj: any) => {
+            globalActions.stopLoading();
+            this.notificationService.error(errorObj.error.message);
+            return of(UserActions.loginError({ message: errorObj.error.message }));
+          })
         )
       )
     )
@@ -61,9 +72,10 @@ export class UserEffects {
   logOut$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UserActions.logOut),
-      map((_) => {
+      map(_ => {
         localStorage.removeItem('token');
         this.router.navigateByUrl('/');
+        globalActions.startLoading();
         return UserActions.logOutSuccess();
       })
     )
@@ -76,6 +88,6 @@ export class UserEffects {
     private actions$: Actions,
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private notificationService: NotificationService
   ) {}
 }

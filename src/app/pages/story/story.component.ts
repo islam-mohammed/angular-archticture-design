@@ -27,7 +27,6 @@ export class StoryComponent extends BaseComponent {
     );
   }
   onSoryClick(id: number) {
-    console.log(id);
     this.router.navigate([`${id}`], { relativeTo: this.route });
   }
 }

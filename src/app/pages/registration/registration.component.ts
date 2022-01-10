@@ -10,17 +10,12 @@ import * as fromUser from '@app/store/user';
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegistrationComponent implements OnInit {
   form: FormGroup;
   regexErrors = regexErrors;
-  loading$ = this.store.select(fromUser.selectLoading);
-
-  constructor(
-    private fb: FormBuilder,
-    private store: Store<fromUser.UserState>
-  ) {}
+  constructor(private fb: FormBuilder, private store: Store<fromUser.UserState>) {}
 
   ngOnInit(): void {
     this.form = this.fb.group(
@@ -29,12 +24,8 @@ export class RegistrationComponent implements OnInit {
           null,
           {
             updateOn: 'blur',
-            validators: [
-              Validators.required,
-              Validators.maxLength(128),
-              Validators.pattern(regex.email),
-            ],
-          },
+            validators: [Validators.required, Validators.maxLength(128), Validators.pattern(regex.email)]
+          }
         ],
         password: [
           null,
@@ -44,9 +35,9 @@ export class RegistrationComponent implements OnInit {
               Validators.required,
               Validators.minLength(6),
               Validators.maxLength(30),
-              Validators.pattern(regex.password),
-            ],
-          },
+              Validators.pattern(regex.password)
+            ]
+          }
         ],
         passwordRepeat: [
           null,
@@ -56,10 +47,10 @@ export class RegistrationComponent implements OnInit {
               Validators.required,
               Validators.minLength(6),
               Validators.maxLength(30),
-              Validators.pattern(regex.password),
-            ],
-          },
-        ],
+              Validators.pattern(regex.password)
+            ]
+          }
+        ]
       },
       { validator: this.repeatPasswordValidator }
     );
@@ -71,9 +62,7 @@ export class RegistrationComponent implements OnInit {
     const password = group.get('password');
     const passwordRepeat = group.get('passwordRepeat');
 
-    return passwordRepeat?.value && password?.value !== passwordRepeat.value
-      ? { repeat: true }
-      : null;
+    return passwordRepeat?.value && password?.value !== passwordRepeat.value ? { repeat: true } : null;
   }
 
   onSubmit(): void {
@@ -82,7 +71,7 @@ export class RegistrationComponent implements OnInit {
 
       const credentials: fromUser.EmailPasswordCredentials = {
         email: value.email,
-        password: value.password,
+        password: value.password
       };
       this.store.dispatch(fromUser.register({ credentials }));
     } else {

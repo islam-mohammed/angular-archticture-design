@@ -5,6 +5,8 @@ import { Story } from '@app/models';
 import { SearhService } from '@app/services/api';
 import { BaseComponent } from '@app/shared';
 import { map, Observable, takeUntil } from 'rxjs';
+import * as fromGlobal from '@app/store/global';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'ny-search',
@@ -17,7 +19,12 @@ export class SearchComponent extends BaseComponent implements OnInit {
 
   @ViewChild('q', { static: true }) searchElRef: ElementRef;
 
-  constructor(private route: ActivatedRoute, private searchService: SearhService, private renderer: Renderer2) {
+  constructor(
+    private store: Store<fromGlobal.GlobalState>,
+    private route: ActivatedRoute,
+    private searchService: SearhService,
+    private renderer: Renderer2
+  ) {
     super();
     this.loadSearchTerms();
   }
@@ -34,10 +41,12 @@ export class SearchComponent extends BaseComponent implements OnInit {
     this.applySearch(q);
   }
   applySearch(q: string, page = 0) {
+    this.store.dispatch(fromGlobal.startLoading());
     this.stories$ = this.searchService.getSearchResults(q, page).pipe(
       map((results: any) => {
         if (results) {
           this.searchMeta = results?.meta;
+          this.store.dispatch(fromGlobal.stopLoading());
           return results.docs;
         }
         return [];
@@ -45,8 +54,6 @@ export class SearchComponent extends BaseComponent implements OnInit {
     );
     this.saveSearchTerm(q);
   }
-
-  onSoryClick(storyId: number) {}
 
   loadSearchTerms() {
     const searchTerms = localStorage.getItem('search');

@@ -1,30 +1,18 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EmailPasswordCredentials } from '@app/store/user';
-import { catchError, Observable } from 'rxjs';
-import { handleHttpError } from './httpErrorHandler';
+import { environment } from 'environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(credentials: EmailPasswordCredentials): Observable<string> {
-    return this.http
-      .post<string>('login', credentials, {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-        })
-      })
-      .pipe(catchError(error => handleHttpError(error)));
+    return this.http.post<string>(`${environment.autApiUrl}/login`, credentials);
   }
 
   register(credentials: EmailPasswordCredentials): Observable<string> {
-    return this.http
-      .post<string>('register', credentials, {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-        })
-      })
-      .pipe(catchError(error => handleHttpError(error)));
+    return this.http.post<string>(`${environment.autApiUrl}/register`, credentials);
   }
 }

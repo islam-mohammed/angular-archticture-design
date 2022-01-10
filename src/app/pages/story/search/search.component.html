@@ -14,7 +14,6 @@
   </h3>
   <ny-story-list
     [stories]="(stories$ | async) || []"
-    (storySelect)="onSoryClick($event)"
   ></ny-story-list>
   <ny-paginator
     [paginationMetaData]="searchMeta"

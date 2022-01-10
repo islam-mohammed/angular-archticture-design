@@ -19,12 +19,10 @@ export class AuthInterceptor implements HttpInterceptor {
     let authReq = req;
     const token = localStorage.getItem('token');
     if (token != null) {
-      // authReq = this.addTokenHeader(req, token);
+      authReq = this.addTokenHeader(req, token);
     }
 
-    const fullUrlReq = this.addFullUrl(authReq);
-
-    return next.handle(fullUrlReq).pipe(
+    return next.handle(authReq).pipe(
       catchError(error => {
         if (error instanceof HttpErrorResponse && !authReq.url.includes('auth') && error.status === 401) {
           return this.handle401Error(authReq, next);
@@ -34,19 +32,10 @@ export class AuthInterceptor implements HttpInterceptor {
       })
     );
   }
-  private addFullUrl(request: HttpRequest<any>): HttpRequest<any> {
-    let url = '';
 
-    if (request.url.includes('login') || request.url.includes('register')) {
-      url = `${environment.autApiUrl}${request.url.replace('/', '')}`;
-    } else {
-      url = `${environment.apiUrl}${request.url.replace('/', '')}`;
-    }
-    return request.clone({ url });
-  }
   private addTokenHeader(request: HttpRequest<any>, token: string) {
     return request.clone({
-      headers: request.headers.set('Authorization', `Bearer ${token}`)
+      headers: request.headers.set(TOKEN_HEADER_KEY, `Bearer ${token}`)
     });
   }
 

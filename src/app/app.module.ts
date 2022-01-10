@@ -18,6 +18,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { GuardsModule } from './guards/guards.module';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { SpinnerModule } from './shared';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, LogoComponent, NavComponent, HomeComponent],
@@ -25,6 +26,7 @@ import { MatIconModule } from '@angular/material/icon';
     BrowserModule,
     MatInputModule,
     MatIconModule,
+    SpinnerModule,
     AppRoutingModule,
     NoopAnimationsModule,
     StoreModule.forRoot(reducers, {

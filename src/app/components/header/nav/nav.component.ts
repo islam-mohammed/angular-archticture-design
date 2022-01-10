@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class NavComponent {
   @Input() isAuthorized: boolean;
   @Output() logOut = new EventEmitter<void>();
+  showMobileMenu = false;
   constructor(private router: Router) {}
   search(q: string) {
     this.router.navigate(['/search'], { queryParams: { q } });

@@ -5,16 +5,14 @@ import { NotificationComponent } from './notification.component';
 @NgModule({
   imports: [MatSnackBarModule],
   exports: [],
-  declarations: [
-    NotificationComponent
-  ],
-  providers: [],
+  declarations: [NotificationComponent],
+  providers: []
 })
 export class NotificationModule {
   static forRoot() {
     return {
       ngModule: NotificationModule,
-      providers: [NotificationService],
+      providers: [NotificationService]
     };
   }
 }
