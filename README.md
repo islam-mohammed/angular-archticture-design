@@ -30,8 +30,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - [x] Search history.
 - [x] Sending JWT Beare Token.
 - [ ] Refresh token (I should have to refresh token to renew the token).
-- [ ] Loading spinner.
 - [ ] Story Comments (The nyt api send 401 error, it needs more investigation).
-- [ ] Some layout and design enhancements.
-
-In general all the remaining feature should take around 10 - 12 hour to complete
